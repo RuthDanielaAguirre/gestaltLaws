@@ -4,6 +4,7 @@ import LeyDetail from '../src/features/gestalt/pages/LeyDetail';
 import About from '../src/features/gestalt/pages/About';
 import Navbar from './components/organisms/Navbar/Navbar';
 import Footer from './components/organisms/Footer/Footer';
+import Test3D from '../src/features/gestalt/pages/Test3D'; 
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ley/:id" element={<LeyDetail />} />
         <Route path="/about" element={<About />} />
+        <Route path="/test-3d" element={<Test3D />} /> 
       </Routes>
       <Footer />
     </BrowserRouter>
