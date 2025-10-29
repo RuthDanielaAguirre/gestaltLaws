@@ -18,11 +18,8 @@ function Footer() {
               <Link to="/" className="text-white-50 text-decoration-none small">
                 Home
               </Link>
-              <Link to="/todas" className="text-white-50 text-decoration-none small">
-                Todas las Leyes
-              </Link>
               <Link to="/about" className="text-white-50 text-decoration-none small">
-                Sobre
+                Descripción
               </Link>
             </div>
           </Col>
