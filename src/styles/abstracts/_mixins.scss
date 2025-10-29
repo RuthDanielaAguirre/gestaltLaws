@@ -1,8 +1,5 @@
-// ==========================================
-// MIXINS CANDY PREMIUM
-// ==========================================
-
-@import './variables';
+@use './variables' as *;
+@use 'sass:color';
 
 // Glass Effect
 @mixin glass($blur: 25px, $opacity: 0.7) {
@@ -22,7 +19,7 @@
   background: linear-gradient(135deg, rgba($color, 0.2), rgba($color, 0.1));
   border: 2px solid rgba($color, 0.3);
   border-radius: $border-radius;
-  color: darken($color, 35%);
+  color: color.adjust($color, $lightness: -35%);
   font-weight: $font-weight-bold;
   cursor: pointer;
   transition: $transition-base;

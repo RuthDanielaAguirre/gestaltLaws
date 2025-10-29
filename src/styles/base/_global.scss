@@ -1,9 +1,6 @@
-// ==========================================
-// ESTILOS GLOBALES
-// ==========================================
-
-@import '../abstracts/variables';
-@import '../abstracts/mixins';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:color';
 
 body {
   background: linear-gradient(180deg, $dark 0%, #1e293b 100%);
@@ -25,7 +22,7 @@ body {
 
 // Gradient Text
 .gradient-text {
-  @include gradient-text($primary, darken($primary, 15%));
+  @include gradient-text($primary, color.adjust($primary, $lightness: -15%));
   font-weight: $font-weight-bold;
 }
 
