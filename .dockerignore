@@ -1,18 +1,38 @@
+# Dependencias
 node_modules
+.pnpm-store
+
+# Build
 dist
+build
+
+# Git
 .git
 .gitignore
-.env
-.env.local
-.env.*.local
-.DS_Store
+
+# Logs
+*.log
+
+# Editor
 .vscode
 .idea
-npm-debug.log
-pnpm-debug.log
-yarn-error.log
-README.md
-.dockerignore
+*.swp
+*.swo
+
+# OS
+.DS_Store
 Thumbs.db
-coverage
-.pnpm-DS_Store
+
+# Env
+.env
+.env.local
+
+# Docker files
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+.dockerignore
+
+# Docs
+README.md
+LICENSE

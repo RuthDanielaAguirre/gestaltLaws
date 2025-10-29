@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import LeyDetail from './pages/LeyDetail';
-import About from './pages/About';
+import Home from '../src/features/gestalt/pages/Home';
+import LeyDetail from '../src/features/gestalt/pages/LeyDetail';
+import About from '../src/features/gestalt/pages/About';
 import Navbar from './components/organisms/Navbar/Navbar';
 import Footer from './components/organisms/Footer/Footer';
 
