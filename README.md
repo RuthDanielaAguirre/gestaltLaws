@@ -28,8 +28,8 @@ Proyecto educativo sobre las **8 Leyes de la Gestalt** aplicadas al diseño visu
 ### **🐳 Con Docker (Recomendado)**
 ```bash
 # Clonar repositorio
-git clone https://github.com/ruth-daniela-aguirre/gestalt-laws.git
-cd gestalt-laws
+git clone https://github.com/RuthDanielaAguirre/gestaltLaws.git
+cd gestaltLaws
 
 # Desarrollo
 docker-compose up dev
@@ -223,8 +223,8 @@ pnpm run build
 ### **VPS con Docker:**
 ```bash
 # En el servidor
-git clone https://github.com/ruth-daniela-aguirre/gestalt-laws.git
-cd gestalt-laws
+git clone https://github.com/RuthDanielaAguirre/gestaltLaws.git
+cd gestaltLaws
 docker-compose up prod -d
 ```
 
@@ -249,14 +249,14 @@ docker-compose up prod -d
 
 **Ruth Daniela Aguirre**
 
-- 🐙 GitHub: [@ruth-daniela-aguirre](https://github.com/ruth-daniela-aguirre)
+- 🐙 GitHub: [@Ruth Daniela Aguirre](https://github.com/RuthDanielaAguirre)
 - 💼 LinkedIn: [Ruth Daniela Aguirre](https://www.linkedin.com/in/ruth-daniela-aguirre)
 
 ---
 
 ## 📄 Licencia
 
-MIT © 2024 Ruth Daniela Aguirre
+MIT © 2025 Ruth Daniela Aguirre
 
 ---
 
