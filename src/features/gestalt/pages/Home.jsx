@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import ButtonGlass from "../../../components/atoms/ButtonGlass/ButtonGlass";
 
 function Home() {
   return (
@@ -16,11 +16,7 @@ function Home() {
             symmetry, these laws reveal the hidden logic behind how we interpret
             what we see every day.{" "}
           </p>
-          <div className="d-flex gap-3 justify-content-center">
-            <Link to="/Laws" className="btn btn-lg glass px-4 py-3 text-white">
-              Discover ↓
-            </Link>
-          </div>
+         <ButtonGlass to="/laws" size="lg" variant="primary">Discover ↓</ButtonGlass>
         </Container>
       </section>
     </>

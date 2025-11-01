@@ -1,23 +1,23 @@
 // ==========================================
-// COLORES CANDY - Sincronizado con SASS
+// COLORES METÁLICOS - Sincronizados con SASS
 // ==========================================
 
 export const CANDY_COLORS = {
-  // Colores principales (iguales a tu _variables.scss)
-  pink: '#ff6b9d',
-  purple: '#c084fc',
-  blue: '#60a5fa',
-  cyan: '#22d3ee',
-  
-  // Variaciones claras (para hover, etc)
-  pinkLight: '#ffb3d1',
-  purpleLight: '#ddb3ff',
-  blueLight: '#93c5fd',
-  cyanLight: '#7dd3fc',
-  
+  // Colores principales (metálicos y elegantes)
+  pink: '#FF6F91',        // rosa metálico (más profundo que el pastel)
+  purple: '#A569FF',      // púrpura cromo
+  blue: '#4A90E2',        // azul acero
+  cyan: '#2DD4E9',        // cian brillante tipo titanio
+
+  // Variaciones claras (para hover, reflejo o luz)
+  pinkLight: '#FF9EBB',
+  purpleLight: '#C79EFF',
+  blueLight: '#7DB9F7',
+  cyanLight: '#74E3F1',
+
   // Colores base del proyecto
-  dark: '#0f172a',
-  light: '#f8fafc',
+  dark: '#0f172a',        // fondo espacial oscuro
+  light: '#f8fafc',       // texto claro o reflejo blanco
 }
 
 // Array para iterar fácilmente (4 colores principales)
@@ -28,7 +28,7 @@ export const CANDY_ARRAY = [
   CANDY_COLORS.cyan,
 ]
 
-// Grupos de colores por ley Gestalt (usar después)
+// Grupos de colores por ley Gestalt (manteniendo la estructura)
 export const GESTALT_COLORS = {
   proximity: [CANDY_COLORS.pink, CANDY_COLORS.purple],
   similarity: [CANDY_COLORS.blue, CANDY_COLORS.cyan, CANDY_COLORS.pink],
@@ -39,3 +39,4 @@ export const GESTALT_COLORS = {
   commonFate: [CANDY_COLORS.cyan, CANDY_COLORS.purple],
   connection: [CANDY_COLORS.pink, CANDY_COLORS.blue],
 }
+
