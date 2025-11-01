@@ -60,6 +60,7 @@ function LeyDetail() {
   <div className="scene3d-wrapper">
     <Scene3D>
       <CubeGroup 
+      key={law.id} 
         animation={law.animation}
         lawId={law.id}
         count={6}
