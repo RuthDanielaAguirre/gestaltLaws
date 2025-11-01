@@ -1,21 +1,13 @@
 import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { CANDY_ARRAY } from '../../utils/colors'
+import { CANDY_ARRAY, GESTALT_COLORS } from '../../utils/colors'
 
-/**
- * CubeGroup - Grupo de cubos 3D adaptativo al tema (dark / light)
- * 
- * Props:
- * - animation: Tipo de animación ('rotation', 'proximity', 'opacity', 'mirror')
- * - count: Número de cubos (default: 6)
- * - colors: Array de colores (default: CANDY_ARRAY)
- * - spacing: Espacio entre cubos (default: 2)
- */
 function CubeGroup({ 
   animation = 'rotation',
   count = 6,
   colors = CANDY_ARRAY,
-  spacing = 2
+  spacing = 2,
+  lawId = null
 }) {
   const groupRef = useRef()
   const meshRefs = useRef([])
@@ -32,7 +24,7 @@ function CubeGroup({
   }, [])
 
   // 🎨 Paletas
-  const lightColors = ['#cdbaff', '#ffc3c3', '#ffe6a8', '#b3e5f9'] // perlados con contraste
+  const lightColors = ['#cdbaff', '#ffc3c3', '#ffe6a8', '#b3e5f9']
 
   // 💫 Propiedades del material
   const getMaterialProps = () => {
@@ -48,16 +40,21 @@ function CubeGroup({
       return {
         metalness: 0.75,
         roughness: 0.45,
-        emissive: '#b7c4ff', // leve brillo azulado para destacar sobre fondo claro
+        emissive: '#b7c4ff', 
         emissiveIntensity: 0.15,
         envMapIntensity: 0.9
       }
     }
   }
 
-  // 🌀 Animaciones
+  const activeColors = lawId && GESTALT_COLORS[lawId]
+    ? GESTALT_COLORS[lawId]
+    : colors
+
+  // 🎢 Animaciones
   useFrame((state) => {
     const time = state.clock.elapsedTime
+    
     switch (animation) {
       case 'rotation':
         meshRefs.current.forEach((mesh, i) => {
@@ -67,6 +64,7 @@ function CubeGroup({
           }
         })
         break
+        
       case 'proximity':
         meshRefs.current.forEach((mesh, i) => {
           if (mesh) {
@@ -75,6 +73,7 @@ function CubeGroup({
           }
         })
         break
+        
       case 'opacity':
         meshRefs.current.forEach((mesh, i) => {
           if (mesh) {
@@ -83,6 +82,7 @@ function CubeGroup({
           }
         })
         break
+        
       case 'mirror':
         meshRefs.current.forEach((mesh, i) => {
           if (mesh) {
@@ -92,17 +92,64 @@ function CubeGroup({
           }
         })
         break
+        
+      case 'colorChange': 
+        meshRefs.current.forEach((mesh, i) => {
+          if (mesh) {
+            const hue = (time * 50 + i * 60) % 360
+            mesh.material.color.setHSL(hue / 360, 0.7, 0.6)
+            mesh.rotation.y = time * 0.5
+          }
+        })
+        break
+        
+      case 'wave': 
+        meshRefs.current.forEach((mesh, i) => {
+          if (mesh) {
+            mesh.position.y = Math.sin(time * 2 + i * 0.8) * 1.2
+            mesh.rotation.z = Math.sin(time + i * 0.3) * 0.3
+          }
+        })
+        break
+        
+      case 'scale': 
+        meshRefs.current.forEach((mesh, i) => {
+          if (mesh) {
+            const scale = 0.8 + Math.sin(time * 2 + i * 0.5) * 0.3
+            mesh.scale.setScalar(scale)
+            mesh.rotation.y = time * 0.4
+          }
+        })
+        break
+        
+      case 'orbit': 
+        meshRefs.current.forEach((mesh, i) => {
+          if (mesh) {
+            const angle = time + (i * Math.PI * 2) / count
+            const radius = 3
+            mesh.position.x = Math.cos(angle) * radius
+            mesh.position.z = Math.sin(angle) * radius
+            mesh.rotation.y = angle
+          }
+        })
+        break
+        
       default:
         break
     }
   })
 
-  // Material según tema
+  // 💎 Material actual
   const materialProps = getMaterialProps()
+
+  // 🎨 Ajuste de brillo emocional
+  if (lawId === 'proximity') materialProps.envMapIntensity = 1.4
+  if (lawId === 'closure') materialProps.envMapIntensity = 0.8
+  if (lawId === 'similarity') materialProps.envMapIntensity = 1.1
 
   return (
     <group ref={groupRef}>
-      {/* 🌫️ Sombra base sutil para modo claro */}
+      {/* 🌫️ Sombra base */}
       {theme === 'light' && (
         <mesh receiveShadow position={[0, -1.2, 0]}>
           <planeGeometry args={[20, 20]} />
@@ -125,7 +172,7 @@ function CubeGroup({
         >
           <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial
-            color={theme === 'dark' ? colors[i % colors.length] : lightColors[i % lightColors.length]}
+            color={theme === 'dark' ? activeColors[i % activeColors.length] : lightColors[i % lightColors.length]}
             {...materialProps}
             toneMapped={false}
             transparent={animation === 'opacity'}

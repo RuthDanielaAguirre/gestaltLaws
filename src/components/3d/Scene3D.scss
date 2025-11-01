@@ -1,25 +1,41 @@
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
+// 🎁 Wrapper para controlar altura
+.scene3d-wrapper {
+  width: 100%;
+  min-height: 31rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    min-height: 21.875rem;
+  }
+
+  @media (min-width: 1200px) {
+    min-height: 37.5rem;
+  }
+}
+
+// 🎨 Contenedor del canvas 3D
 .scene3d-container {
-  height: 31rem;
+  height: 100%;
   width: 100%;
   position: relative;
   border-radius: $border-radius-lg;
-  overflow: hidden;
+  overflow: visible; // ← CRÍTICO: visible para ver estrellas
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.6s ease, box-shadow 0.6s ease;
 
-  // 🎭 FONDO BASE (modo oscuro por defecto)
+  // 🎭 FONDO transparente (para ver estrellas)
   background: radial-gradient(
     circle at 50% 30%,
-    rgba($primary, 0.15),
-    rgba($dark, 0.95)
+    rgba($primary, 0.05),
+    rgba($dark, 0.3)
   );
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   box-shadow: $shadow-glass;
 
@@ -27,8 +43,8 @@
   body[data-theme='light'] & {
     background: radial-gradient(
       circle at 50% 30%,
-      rgba(180, 190, 220, 0.6),
-      rgba(90, 110, 140, 0.9)
+      rgba(180, 190, 220, 0.2),
+      rgba(90, 110, 140, 0.3)
     );
     border: 1.5px solid rgba(255, 255, 255, 0.3);
     box-shadow: 
@@ -36,7 +52,7 @@
       0 8px 24px rgba(0, 0, 0, 0.3);
   }
 
-  // 🌫️ LIGERO GLOW INTERIOR (en ambos modos)
+  // 🌫️ GLASS EFFECT sutil (detrás del canvas)
   &::after {
     content: "";
     position: absolute;
@@ -44,41 +60,35 @@
     border-radius: inherit;
     background: radial-gradient(
       circle at 50% 40%,
-      rgba($primary, 0.05),
+      rgba($primary, 0.03),
       transparent 80%
     );
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
     pointer-events: none;
+    z-index: 0;
   }
 
-  // Canvas ocupa todo
+  // Canvas ENCIMA del glass
   canvas {
     position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-  }
-
-  // Responsive
-  @media (max-width: 768px) {
-    height: 21.875rem;
-  }
-
-  @media (min-width: 1200px) {
-    height: 37.5rem;
+    z-index: 2;
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
-// 🌟 GLOW METÁLICO SUAVE
+// 🌟 GLOW METÁLICO muy sutil
 .scene3d-container::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 0 20px rgba($primary, 0.25);
+  box-shadow: inset 0 0 15px rgba($primary, 0.15);
   pointer-events: none;
+  z-index: 0;
 
-  // En modo claro, cambia el color del brillo interior
   body[data-theme='light'] & {
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2);
   }
 }
