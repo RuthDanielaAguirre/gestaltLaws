@@ -1,304 +1,231 @@
-# 🎨 Gestalt Laws - Interactive Learning
-
-Proyecto educativo sobre las **8 Leyes de la Gestalt** aplicadas al diseño visual, desarrollado con React, Bootstrap, SASS y React Router DOM.
-
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
-
----
-
-## 🚀 Tecnologías
-
-- ⚛️ **React 18** - UI Library
-- 🎨 **Bootstrap 5** - Framework CSS
-- 💅 **SASS** - Preprocesador CSS (arquitectura 7-1)
-- 🛣️ **React Router DOM** - Navegación entre páginas
-- 🌓 **Context API** - Dark/Light Mode persistente
-- 🐳 **Docker** - Multi-stage builds (Dev + Prod)
-- 🌐 **Nginx** - Servidor web optimizado para SPA
-- 📦 **pnpm** - Package manager rápido
-
----
-
-## 📦 Quick Start
-
-### **🐳 Con Docker (Recomendado)**
-```bash
-# Clonar repositorio
-git clone https://github.com/RuthDanielaAguirre/gestaltLaws.git
-cd gestaltLaws
-
-# Desarrollo
-docker-compose up dev
-
-# Producción
-docker-compose up prod --build
-
-# Accesos:
-# Dev:  http://localhost:5173
-# Prod: http://localhost:8080
-```
-
-### **💻 Sin Docker (Local)**
-```bash
-# Requisitos: Node.js 20+ y pnpm
-
-# Instalar pnpm
-npm install -g pnpm
-
-# Instalar dependencias
-pnpm install
-
-# Desarrollo
-pnpm run dev
-
-# Build para producción
-pnpm run build
-
-# Preview del build
-pnpm run preview
-```
-
----
-
-## 🐳 Comandos Docker
-
-### **Desarrollo:**
-```bash
-# Iniciar entorno de desarrollo
-docker-compose up dev
-
-# En segundo plano
-docker-compose up dev -d
-
-# Ver logs
-docker-compose logs -f dev
-
-# Detener
-docker-compose down
-
-# Rebuild
-docker-compose up dev --build
-```
-
-### **Producción:**
-```bash
-# Build y ejecutar
-docker-compose up prod --build
-
-# Detener
-docker-compose down
-
-# Limpiar todo
-docker-compose down -v --rmi all
-```
-
-### **Utilidades:**
-```bash
-# Entrar al contenedor dev
-docker exec -it gestalt-dev sh
-
-# Entrar al contenedor prod
-docker exec -it gestalt-prod sh
-
-# Ver todos los contenedores
-docker ps -a
-
-# Ver uso de recursos
-docker stats
-```
-
----
-
-## 📚 Características
-
-### ✨ **8 Leyes de Gestalt Interactivas**
-
-| Ley | Descripción |
-|-----|-------------|
-| **Proximidad** | Elementos cercanos se perciben como grupo |
-| **Semejanza** | Lo similar se agrupa mentalmente |
-| **Continuidad** | Seguimos líneas y curvas naturalmente |
-| **Cierre** | Completamos formas incompletas |
-| **Figura y Fondo** | Separamos objetos del fondo |
-| **Prägnanz** | Preferimos formas simples |
-| **Región Común** | Los límites crean grupos |
-| **Destino Común** | El movimiento sincronizado agrupa |
-
-### 🎯 **Features Principales:**
-
-- ✅ Navegación fluida con React Router
-- ✅ Dark/Light Mode con persistencia
-- ✅ Diseño Candy Glass (glassmorphism premium)
-- ✅ Arquitectura SASS profesional
-- ✅ Responsive design (mobile-first)
-- ✅ Docker multi-stage optimizado
-- ✅ Nginx con gzip y cache
-- ✅ Security headers configurados
-
----
-
-## 📁 Estructura del Proyecto
-```
-gestalt-laws/
-├── src/
-│   ├── components/
-│   │   ├── atoms/              # Button, ColorBar
-│   │   ├── molecules/          # Componentes medianos
-│   │   └── organisms/          # Navbar, Footer
-│   ├── contexts/
-│   │   └── ThemeContext.jsx    # Dark/Light mode
-│   ├── data/
-│   │   └── gestaltLaws.js      # Data de las 8 leyes
-│   ├── pages/
-│   │   ├── Home.jsx            # Landing page
-│   │   ├── LeyDetail.jsx       # Detalle de cada ley
-│   │   └── About.jsx           # About page
-│   ├── styles/
-│   │   ├── abstracts/
-│   │   │   ├── _variables.scss
-│   │   │   └── _mixins.scss
-│   │   ├── base/
-│   │   │   └── _global.scss
-│   │   └── main.scss
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-├── Dockerfile                  # Build de producción
-├── Dockerfile.dev              # Imagen de desarrollo
-├── docker-compose.yml          # Orquestación
-├── nginx.conf                  # Config Nginx para SPA
-└── package.json
-```
-
----
-
-## 🛠️ Scripts
-```bash
-pnpm run dev       # Desarrollo con Vite
-pnpm run build     # Build optimizado
-pnpm run preview   # Preview del build
-pnpm run lint      # Linter ESLint
-```
-
----
-
-## 🌐 Arquitectura Docker
-
-### **Desarrollo (Dockerfile.dev):**
-- **Base:** Node 22 Alpine
-- **Port:** 5173
-- **Features:** Hot reload, volume mount
-- **Package Manager:** pnpm
-
-### **Producción (Dockerfile):**
-- **Stage 1 (Builder):** Node 22 Alpine → Build React app
-- **Stage 2 (Runtime):** Nginx Alpine → Servir estáticos
-- **Port:** 80 (mapeado a 8080)
-- **Optimizations:** 
-  - Gzip compression
-  - Static asset caching (1 year)
-  - Security headers
-  - SPA routing support
-
----
-
-## 🚀 Despliegue
-
-### **Docker Hub:**
-```bash
-docker build -t ruth-daniela-aguirre/gestalt-laws:latest .
-docker push ruth-daniela-aguirre/gestalt-laws:latest
-```
-
-### **Vercel/Netlify:**
-```bash
-pnpm run build
-# Subir directorio dist/
-```
-
-### **VPS con Docker:**
-```bash
-# En el servidor
-git clone https://github.com/RuthDanielaAguirre/gestaltLaws.git
-cd gestaltLaws
-docker-compose up prod -d
-```
-
----
-
-## 🔧 Stack Tecnológico
-
-| Categoría | Tecnología |
-|-----------|------------|
-| **Frontend** | React 18, React Router DOM 6 |
-| **Estilos** | Bootstrap 5, SASS, Custom Theme |
-| **Íconos** | Bootstrap Icons |
-| **Build Tool** | Vite 5 |
-| **Package Manager** | pnpm |
-| **Containerización** | Docker, Docker Compose |
-| **Web Server** | Nginx Alpine |
-| **Linter** | ESLint |
-
----
-
-## 👩‍💻 Autora
-
-**Ruth Daniela Aguirre**
-
-- 🐙 GitHub: [@Ruth Daniela Aguirre](https://github.com/RuthDanielaAguirre)
-- 💼 LinkedIn: [Ruth Daniela Aguirre](https://www.linkedin.com/in/ruth-daniela-aguirre)
-
----
-
-## 📄 Licencia
-
-MIT © 2025 Ruth Daniela Aguirre
-
----
-
-## 🎓 Aprendizajes
-
-Este proyecto fue desarrollado para practicar:
-
-- ✅ React Router DOM y navegación SPA
-- ✅ Context API para estado global
-- ✅ Arquitectura SASS profesional (7-1 pattern)
-- ✅ Docker multi-stage builds
-- ✅ Nginx optimization para React apps
-- ✅ Diseño moderno con glassmorphism
-- ✅ Responsive design patterns
-
----
-
-## 🐛 Troubleshooting
-
-### Hot reload no funciona en Windows:
-```yaml
-# En docker-compose.yml
-environment:
-  - CHOKIDAR_USEPOLLING=true
-```
-
-### Rutas 404 en producción:
-
-Verifica que `nginx.conf` tenga:
-```nginx
-location / {
-    try_files $uri $uri/ /index.html;
-}
-```
-
-### Permisos en Linux:
-```bash
-sudo chown -R $USER:$USER .
-```
+# ✨ Gestalt Laws - Interactive 3D Learning Platform
+
+An elegant educational project about the **8 Gestalt Laws** with stunning real-time 3D visualizations built with React, Three.js, and modern web technologies.
+
+![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-0.180.0-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.1.10-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-1.93.2-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ---
 
 ## 📸 Screenshots
 
-_Próximamente..._
+### Dark Mode
+![Dark Mode](./assets/images/blackMode.png)
+
+### Light Mode
+![Light Mode](./assets/images/lightMode.png)
+
+---
+
+## 🎯 Features
+
+- 🎨 **8 Interactive Gestalt Laws** with unique 3D animations
+- 🌓 **Dark/Light Theme** with persistent localStorage
+- ⭐ **Animated Star Field** - 6000 particles in space
+- 🎭 **Dynamic 3D Materials** - Theme-aware metallic effects
+- 📱 **Fully Responsive** - Mobile-first design
+- 🐳 **Docker Ready** - Consistent dev environment
+- ⚡ **Lightning Fast** - Vite with HMR
+
+---
+
+## 📚 The 8 Gestalt Laws
+
+| Law | Animation | Description |
+|-----|-----------|-------------|
+| **Proximity** | Breathing | Elements close together form groups |
+| **Similarity** | Color Change | Similar things are grouped mentally |
+| **Continuity** | Wave | We follow lines and curves naturally |
+| **Closure** | Opacity | We complete incomplete shapes |
+| **Figure-Ground** | Mirror | We separate objects from background |
+| **Prägnanz** | Scale | We prefer simple forms |
+| **Common Region** | Rotation | Boundaries create groups |
+| **Common Fate** | Orbit | Synchronized movement groups elements |
+
+---
+
+## 🚀 Quick Start
+
+### **🐳 With Docker (Recommended)**
+```bash
+# Clone repository
+git clone https://github.com/RuthDanielaAguirre/gestaltLaws.git
+cd gestaltLaws
+
+# Start development
+docker-compose up dev
+
+# Access at http://localhost:5173
+```
+
+### **💻 Without Docker**
+```bash
+# Requirements: Node.js 22+ and pnpm
+npm install -g pnpm
+pnpm install
+pnpm run dev
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- ⚛️ **React 19.1.1** - UI Library
+- 🎭 **Three.js 0.180.0** - 3D Graphics
+- 🔮 **React Three Fiber 9.4.0** - React renderer for Three.js
+- 🌟 **@react-three/drei 10.7.6** - 3D helpers
+- 🎨 **Bootstrap 5.3.8** - CSS Framework
+- 💅 **SASS 1.93.2** - CSS Preprocessor
+- 🛣️ **React Router DOM 7.9.4** - Navigation
+- ⚡ **Vite 7.1.10** - Build tool
+- 📦 **pnpm 10.18.3** - Package manager
+- 🐳 **Docker** - Containerization
+
+---
+
+## 📁 Project Structure
+```
+gestalt-laws/
+├── src/
+│   ├── components/
+│   │   ├── atoms/          # ButtonGlass, ColorBar
+│   │   ├── organisms/      # Navbar, Footer
+│   │   ├── layouts/        # Layout with Outlet
+│   │   └── 3d/             # Scene3D, CubeGroup
+│   ├── contexts/           # ThemeContext
+│   ├── data/               # gestaltLaws.js
+│   ├── features/gestalt/   # Pages
+│   ├── routes/             # Route definitions
+│   ├── styles/             # SASS (7-1 pattern)
+│   └── utils/              # colors.js
+├── Dockerfile              # Production
+├── Dockerfile.dev          # Development
+└── docker-compose.yml      # Orchestration
+```
+
+---
+
+## 🎨 Design System
+
+### **Metallic Candy Colors**
+```scss
+$candy-pink: #FF6F91      // Metallic rose
+$candy-purple: #A569FF    // Chrome purple
+$candy-blue: #4A90E2      // Steel blue
+$candy-cyan: #2DD4E9      // Titanium cyan
+
+$dark: #050812            // Space dark
+$light: #f9fafc           // Light text
+```
+
+### **Glass Morphism**
+- Backdrop blur: 20-40px
+- Semi-transparent backgrounds
+- Subtle borders and layered shadows
+
+---
+
+## 🎭 3D Animations
+
+Each Gestalt law has a unique animation:
+
+- **proximity** - Breathing effect
+- **colorChange** - HSL color cycling
+- **wave** - Sine wave motion
+- **opacity** - Fade in/out
+- **rotation** - Continuous rotation
+- **mirror** - Symmetric movement
+- **scale** - Pulsing scale
+- **orbit** - Circular orbit
+
+---
+
+## 🐳 Docker Commands
+```bash
+# Development
+docker-compose up dev
+docker-compose logs -f dev
+
+# Production
+docker-compose up prod --build
+
+# Clean
+docker-compose down -v --rmi all
+```
+
+---
+
+## 🎓 Learning Outcomes
+
+- ✅ React Router v7 with nested routes
+- ✅ Context API for state management
+- ✅ Three.js with React Three Fiber
+- ✅ Real-time 3D animations (60 FPS)
+- ✅ SASS architecture (7-1 pattern)
+- ✅ Docker multi-stage builds
+- ✅ Modern glass morphism design
+- ✅ Responsive mobile-first design
+
+---
+
+## 🐛 Troubleshooting
+
+### Hot reload not working (Windows)
+```yaml
+environment:
+  - CHOKIDAR_USEPOLLING=true
+```
+
+### Stars not visible
+```scss
+.scene3d-container {
+  overflow: visible;
+}
+```
+
+### Vite cache issues
+```bash
+docker-compose down -v
+docker-compose up dev --build
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! 
+
+1. Fork the project
+2. Create feature branch (`git checkout -b feature/Amazing`)
+3. Commit changes (`git commit -m 'Add Amazing'`)
+4. Push to branch (`git push origin feature/Amazing`)
+5. Open Pull Request
+
+---
+
+## 📄 License
+
+MIT © 2025 Ruth Daniela Aguirre
+
+---
+
+## 👩‍💻 Author
+
+**Ruth Daniela Aguirre**
+
+- 🐙 GitHub: [@RuthDanielaAguirre](https://github.com/RuthDanielaAguirre)
+- 💼 LinkedIn: [Ruth Daniela Aguirre](https://www.linkedin.com/in/ruth-daniela-aguirre)
+
+---
+
+## 🙏 Acknowledgments
+
+- Three.js Community
+- Poimandres (React Three Fiber)
+- Bootstrap Team
+- Gestalt Psychology Pioneers
