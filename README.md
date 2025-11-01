@@ -12,6 +12,12 @@ An elegant educational project about the **8 Gestalt Laws** with stunning real-t
 
 ---
 
+## 🌐 Live Demo
+
+**[View Live Demo →](https://gestalt-laws.vercel.app/)**
+
+---
+
 ## 📸 Screenshots
 
 ### Dark Mode
