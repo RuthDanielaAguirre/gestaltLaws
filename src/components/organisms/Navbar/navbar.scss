@@ -1,0 +1,165 @@
+@use '../../../styles/abstracts/variables' as *;
+
+.navbar-candy {
+  // ❌ Sin background propio - se integra al fondo de la página
+  background: transparent !important;
+  backdrop-filter: none;
+  
+  // ❌ Sin bordes ni sombras pesadas
+  border: none;
+  box-shadow: none;
+  
+  transition: $transition-base;
+  padding: 2rem 0 1rem;
+  position: relative;
+  
+  // ❌ Sin pseudo-elementos decorativos
+  
+  .navbar-brand {
+    color: $light !important;
+    font-weight: $font-weight-bold;
+    font-size: 1.4rem;
+    transition: $transition-base;
+    
+    &:hover {
+      color: $primary !important;
+      transform: translateY(-1px);
+    }
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background: rgba($light, 0.05);
+    border-radius: $border-radius;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+  
+  .nav-link {
+    color: rgba($light, 0.7) !important;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border-radius: $border-radius;
+    transition: $transition-base;
+    position: relative;
+    font-weight: $font-weight-medium;
+    font-size: 0.95rem;
+    
+    // Hover minimalista
+    &:hover {
+      color: $light !important;
+      background: rgba($light, 0.08);
+    }
+    
+    // Active state sutil
+    &.active {
+      color: $light !important;
+      background: rgba($light, 0.12);
+    }
+  }
+  
+  // Cuando hace scroll - SUTIL
+  &.scrolled {
+    background: rgba($dark, 0.8) !important;
+    backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+  }
+
+  .theme-toggle-btn {
+    background: rgba($light, 0.08);
+    border: 1px solid rgba($light, 0.15);
+    border-radius: $border-radius;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    color: rgba($light, 0.8);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: $transition-base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: rgba($light, 0.15);
+      color: $light;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 991px) {
+  .navbar-candy {
+    .navbar-collapse {
+      background: rgba($dark, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: $border-radius-lg;
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba($light, 0.1);
+    }
+    
+    .nav-link {
+      margin: 0.25rem 0;
+    }
+
+    .theme-toggle-btn {
+      margin: 1rem auto 0;
+      width: fit-content;
+    }
+  }
+}
+
+// 💡 Modo claro
+body[data-theme='light'] {
+  .navbar-candy {
+    .navbar-brand {
+      color: $dark !important;
+      
+      &:hover {
+        color: $primary !important;
+      }
+    }
+    
+    .nav-link {
+      color: rgba($dark, 0.6) !important;
+      
+      &:hover {
+        color: $dark !important;
+        background: rgba($dark, 0.05);
+      }
+      
+      &.active {
+        color: $dark !important;
+        background: rgba($dark, 0.1);
+      }
+    }
+    
+    .theme-toggle-btn {
+      color: rgba($dark, 0.7);
+      background: rgba($dark, 0.05);
+      border-color: rgba($dark, 0.1);
+      
+      &:hover {
+        color: $dark;
+        background: rgba($dark, 0.1);
+      }
+    }
+    
+    &.scrolled {
+      background: rgba($light, 0.8) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

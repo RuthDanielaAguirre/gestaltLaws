@@ -43,7 +43,7 @@ export const gestaltLaws = [
     subtitle: 'We separate objects from the background',
     description: 'We distinguish between the main figure and its background.',
     color: CANDY_COLORS.blue,
-    animation: 'mirror', 
+    animation: 'scale', 
     geometry: 'box'
   },
   {
@@ -52,7 +52,7 @@ export const gestaltLaws = [
     subtitle: 'We prefer simple forms',
     description: 'We interpret ambiguity as simple, organized shapes.',
     color: CANDY_COLORS.purple,
-    animation: 'scale',
+    animation: 'mirror',
     geometry: 'box'
   },
   {

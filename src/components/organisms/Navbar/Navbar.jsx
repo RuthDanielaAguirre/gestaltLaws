@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar as BsNavbar, Nav, Container } from 'react-bootstrap';
 import { useTheme } from '../../../contexts/ThemeContext';  
-import '../../../styles/components/Navbar.scss';
+import './navbar.scss'
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
