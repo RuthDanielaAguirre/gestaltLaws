@@ -29,7 +29,7 @@ function Footer() {
             <div className="d-flex gap-3 justify-content-center justify-content-md-end mb-3">
               {/* GitHub */}
               <a 
-                href="https://github.com/ruth-daniela-aguirre" 
+                href="https://github.com/RuthDanielaAguirre" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white-50"
