@@ -15,10 +15,10 @@ An elegant educational project about the **8 Gestalt Laws** with stunning real-t
 ## 📸 Screenshots
 
 ### Dark Mode
-![Dark Mode](./assets/images/blackMode.png)
+![Dark Mode](./src/assets/images/blackMode.png)
 
 ### Light Mode
-![Light Mode](./assets/images/lightMode.png)
+![Light Mode](./src/assets/images/lightMode.png)
 
 ---
 
