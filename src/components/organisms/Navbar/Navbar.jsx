@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar as BsNavbar, Nav, Container } from 'react-bootstrap';
-import { useTheme } from '../../../contexts/ThemeContext';  // ← IMPORTANTE
+import { useTheme } from '../../../contexts/ThemeContext';  
 import '../../../styles/components/Navbar.scss';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { isDark, toggleTheme } = useTheme();  // ← IMPORTANTE
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +32,7 @@ function Navbar() {
         <BsNavbar.Toggle aria-controls="navbar-nav" />
         
         <BsNavbar.Collapse id="navbar-nav">
-          <Nav className="ms-auto align-items-center">  {/* ← align-items-center */}
+          <Nav className="ms-auto align-items-center"> 
             <Link 
               to="/" 
               className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
@@ -43,10 +43,16 @@ function Navbar() {
               to="/about" 
               className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
             >
-              Sobre
+              About Gestalt
             </Link>
-            
-            {/* ⭐ BOTÓN AQUÍ ⭐ */}
+
+            <Link 
+              to="/laws" 
+              className={`nav-link ${location.pathname === '/laws' ? 'active' : ''}`}
+            >
+              All Laws
+            </Link>
+
             <button
               onClick={toggleTheme}
               className="theme-toggle-btn"

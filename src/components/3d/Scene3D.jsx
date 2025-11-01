@@ -43,7 +43,7 @@ function Scene3D({
         {/* CONTROLES DE ÓRBITA - Rotar con mouse */}
         {enableControls && (
           <OrbitControls 
-            enableZoom={true}      // Zoom con rueda
+            enableZoom={false}      // Zoom con rueda
             enablePan={false}      // No mover escena
             minDistance={3}        // Zoom mínimo
             maxDistance={15}       // Zoom máximo

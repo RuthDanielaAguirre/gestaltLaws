@@ -8,9 +8,7 @@ function Footer() {
         <Row className="align-items-center">
           <Col md={4} className="text-center text-md-start mb-3 mb-md-0">
             <h5 className="fw-bold text-white mb-2">Gestalt Laws</h5>
-            <p className="text-white-50 mb-0 small">
-              Psicología de la percepción visual aplicada al diseño
-            </p>
+          
           </Col>
           
           <Col md={4} className="text-center mb-3 mb-md-0">
@@ -19,7 +17,10 @@ function Footer() {
                 Home
               </Link>
               <Link to="/about" className="text-white-50 text-decoration-none small">
-                Descripción
+                About
+              </Link>
+              <Link to="/laws" className="text-white-50 text-decoration-none small">
+                All Laws
               </Link>
             </div>
           </Col>

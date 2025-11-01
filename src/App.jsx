@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../src/features/gestalt/pages/Home';
+import Laws from '../src/features/gestalt/pages/AllLaws';
 import LeyDetail from '../src/features/gestalt/pages/LeyDetail';
 import About from '../src/features/gestalt/pages/About';
 import Navbar from './components/organisms/Navbar/Navbar';
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ley/:id" element={<LeyDetail />} />
+        <Route path="/laws" element={<Laws />} />
         <Route path="/about" element={<About />} />
         <Route path="/test-3d" element={<Test3D />} /> 
       </Routes>
