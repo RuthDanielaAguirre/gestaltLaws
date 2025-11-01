@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 function About() {
   return (
-    <Container className="py-5 min-vh-100" style={{ paddingTop: "100px" }}>
+    <Container className="mt-5 py-5 min-vh-100" style={{ paddingTop: "100px" }}>
       <div className="glass p-5 rounded-4">
         <h1 className="text-white mb-4">About Gestalt</h1>
         <h2 className="text-white fs-5 mb-4"> Gestalt is the study of how the mind brings order to chaos.

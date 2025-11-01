@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ButtonGlass from "../../../components/atoms/ButtonGlass/ButtonGlass";
+import AllLaws from "./AllLaws";
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
          <ButtonGlass to="/laws" size="lg" variant="primary">Discover ↓</ButtonGlass>
         </Container>
       </section>
+      <AllLaws/>
     </>
   );
 }
