@@ -25,6 +25,22 @@ function Scene3D({ children, enableControls = true, cameraPosition = [0, 0, 5] }
           near: 0.1,
           far: 100
         }}
+          gl={{ 
+          antialias: true,
+          alpha: true,
+          powerPreference: 'high-performance',
+          preserveDrawingBuffer: false
+        }}
+        dpr={[1, 2]} 
+        onCreated={({ gl }) => { 
+          gl.domElement.addEventListener('webglcontextlost', (event) => {
+            event.preventDefault()
+            console.warn('WebGL context lost. Attempting to restore...')
+          })
+          gl.domElement.addEventListener('webglcontextrestored', () => {
+            console.log('WebGL context restored')
+          })
+        }}
       >
         {/* 🌗 Tema dinámico */}
         {theme === 'dark' ? <DarkSetup /> : <LightSetup />}
@@ -57,7 +73,7 @@ function LightSetup() {
   return (
     <>
       <Environment preset="dawn" background={false} />
-      <ambientLight intensity={0.2} color="#07193dff" />
+      <ambientLight intensity={0.2} color="#07193d" />
       <directionalLight position={[2, 3, 4]} intensity={0.9} color="#dbe4ff" />
     </>
   )
